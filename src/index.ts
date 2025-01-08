@@ -4,6 +4,7 @@ import session from 'express-session';
 import swaggerConfig from './configs/swagger';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
+import userRoutes from './routes/user.routes';
 
 const app = express();
 
@@ -41,5 +42,6 @@ app.use((req, _res, next) => {
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Call Routes
+userRoutes(app);
 
 export default app;
