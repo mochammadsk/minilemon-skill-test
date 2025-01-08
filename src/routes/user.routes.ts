@@ -14,5 +14,8 @@ export default (app: Application): void => {
   // Update user by id
   router.put('/update/:id', validateUser, user.updateUser);
 
+  // Delete user by id
+  router.delete('/delete/:id', user.deleteUser);
+
   app.use('/user', router);
 };
