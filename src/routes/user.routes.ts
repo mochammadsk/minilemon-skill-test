@@ -11,5 +11,8 @@ export default (app: Application): void => {
   // Get user
   router.get('/get', user.getUser);
 
+  // Update user by id
+  router.put('/update/:id', validateUser, user.updateUser);
+
   app.use('/user', router);
 };
