@@ -45,9 +45,14 @@ npm install
 Create a `.env` file in the root directory and add the following:
 
 ```env
-MONGODB_URI=mongodb://localhost:27017/minilemon
-NODE_ENV=development
-PORT=3000
+MONGODB_URI=your-mongodb-url
+PORT=your-port
+```
+
+Or can do decrypt .env.encrypted with run:
+
+```bash
+env-encryption decrypt --key base64:AYuld/VxoGcWjMWwgbQHg50yKJspOeKVbE+8CyQKHno=
 ```
 
 #### Step 4: Run the application
@@ -146,19 +151,11 @@ The application will run on `http://localhost:3000`. MongoDB is exposed on `loca
 
 ---
 
-## Running Tests
-
-To run the test suite:
-
-```bash
-npm test
-```
-
----
-
 ## CI/CD Integration
 
 This project uses GitHub Actions for CI/CD. On every push to the `main` branch:
 
 1. Tests are run.
 2. Docker images are built and pushed to Docker Hub.
+
+[![MINILEMON SKILL TEST](https://github.com/mochammadsk/minilemon-skill-test/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/mochammadsk/minilemon-skill-test/actions/workflows/main.yml)
