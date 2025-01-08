@@ -7,25 +7,39 @@ const createUser: RequestHandler = async (
   res: Response
 ): Promise<void> => {
   try {
-    // Find if user already exist by email
+    // Find user already exist by email
     const existUser = await User.findOne({ email: req.body.email });
 
-    // Check if user already exist by email
+    // Check user already exist by email
     if (existUser) {
-      res.status(400).json({ message: 'User already exist' });
+      res
+        .status(400)
+        .json({ message: `Data with email ${req.body.email} already exist!` });
       return;
     }
 
-    // Check if email is valid
+    // Check required field
+    if (
+      !req.body.email ||
+      !req.body.name ||
+      !req.body.telp ||
+      !req.body.department
+    ) {
+      res.status(400).json({ message: 'All fields are required!' });
+      return;
+    }
+
+    // Check email is valid
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(req.body.email)) {
-      res.status(400).json({ message: 'Invalid email' });
+      res.status(400).json({ message: 'Invalid email!' });
       return;
     }
 
+    // Check telp number is valid
     const telpRegex = /^\d{10,}$/;
     if (!telpRegex.test(req.body.telp)) {
-      res.status(400).json({ message: 'Telp number must be 10 digit' });
+      res.status(400).json({ message: 'Telp number must be 10 digit!' });
       return;
     }
 
@@ -33,7 +47,7 @@ const createUser: RequestHandler = async (
     const user = new User(req.body);
     await user.save();
 
-    res.status(201).json({ message: 'User created successfully' });
+    res.status(201).json({ message: 'Data created successfully', data: user });
   } catch (error: any) {
     res
       .status(500)
@@ -48,7 +62,7 @@ const getUser: RequestHandler = async (_req: Request, res: Response) => {
 
     // Check if user is empty
     if (user.length === 0) {
-      res.status(404).json({ message: 'Data user is empty' });
+      res.status(404).json({ message: 'Data is empty!' });
       return;
     }
 
@@ -70,13 +84,15 @@ const updateUser: RequestHandler = async (req: Request, res: Response) => {
       new: true,
     });
 
-    // Check if user is empty
+    // Check user already exist
     if (!user) {
-      res.status(404).json({ message: 'User not found' });
+      res
+        .status(404)
+        .json({ message: `Data with ID ${req.params.id} not found!` });
       return;
     }
 
-    res.status(200).json({ message: 'User updated successfully', data: user });
+    res.status(200).json({ message: 'Data updated successfully', data: user });
   } catch (error: any) {
     res
       .status(500)
@@ -92,11 +108,13 @@ const deleteUser: RequestHandler = async (req: Request, res: Response) => {
 
     // Check if user is empty
     if (!user) {
-      res.status(404).json({ message: 'User not found' });
+      res
+        .status(404)
+        .json({ message: `Data with ID ${req.params.id} not found!` });
       return;
     }
 
-    res.status(200).json({ message: 'User deleted successfully' });
+    res.status(200).json({ message: 'Data deleted successfully' });
   } catch (error: any) {
     res
       .status(500)
