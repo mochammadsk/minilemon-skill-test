@@ -41,4 +41,25 @@ const createUser: RequestHandler = async (
   }
 };
 
-export default { createUser };
+/* Get User */
+const getUser: RequestHandler = async (_req: Request, res: Response) => {
+  try {
+    const user = await User.find();
+
+    // Check if user is empty
+    if (user.length === 0) {
+      res.status(404).json({ message: 'Data user is empty' });
+      return;
+    }
+
+    res
+      .status(200)
+      .json({ message: 'Data retrieved successfully', data: user });
+  } catch (error: any) {
+    res
+      .status(500)
+      .json({ message: 'Internal server error', error: error.message });
+  }
+};
+
+export default { createUser, getUser };
