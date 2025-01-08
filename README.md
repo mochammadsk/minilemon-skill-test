@@ -30,7 +30,7 @@ This project is a skill test for creating a CRUD application using Node.js, Expr
 #### Step 1: Clone the repository
 
 ```bash
-git clone https://github.com/your-repo/minilemon-skill-test.git
+git clone https://github.com/mochammadsk/minilemon-skill-test.git
 cd minilemon-skill-test
 ```
 
@@ -52,7 +52,7 @@ PORT=your-port
 Or can do decrypt .env.encrypted with run:
 
 ```bash
-env-encryption decrypt --key base64:AYuld/VxoGcWjMWwgbQHg50yKJspOeKVbE+8CyQKHno=
+env-encryption decrypt --key base64:GK0eFL/Ckj9eYF1xkc/O6TR2czsTHOIUvvNKAxQGSaI=
 ```
 
 #### Step 4: Run the application

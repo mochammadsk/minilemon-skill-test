@@ -6,7 +6,7 @@ import app from './index';
 dotenv.config();
 
 mongose
-  .connect(process.env.URI as string)
+  .connect(process.env.MONGODB_URI as string)
   .then(() => console.log('Connected to Database'))
   .catch((error) => {
     console.log('Failed connect to database', error);
