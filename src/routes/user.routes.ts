@@ -8,5 +8,8 @@ export default (app: Application): void => {
   // Create user
   router.post('/create', validateUser, user.createUser);
 
+  // Get user
+  router.get('/get', user.getUser);
+
   app.use('/user', router);
 };
