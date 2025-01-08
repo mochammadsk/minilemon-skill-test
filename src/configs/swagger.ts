@@ -5,8 +5,8 @@ const swaggerConfig = {
     openapi: '3.0.0',
     info: {
       title: 'API Documentation',
-      version: '1.0.0',
-      description: 'API Doumentation for Minilemon Skill Test',
+      version: '1.0',
+      description: 'CRUD User - Skill Test at Minilemon',
     },
     servers: [
       {
@@ -15,7 +15,7 @@ const swaggerConfig = {
     ],
     components: schema.components,
   },
-  apis: ['./routes/*.js', './swagger/*.js'],
+  apis: ['./src/routes/*.ts', './src/swagger/*.ts'],
 };
 
 export default swaggerConfig;
