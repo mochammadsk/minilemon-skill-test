@@ -1,9 +1,9 @@
 import cors from 'cors';
 import express from 'express';
 import session from 'express-session';
-import swaggerConfig from './configs/swagger';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
+import swaggerConfig from './configs/swagger';
 import userRoutes from './routes/user.routes';
 
 const app = express();
